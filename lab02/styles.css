@@ -1,0 +1,35 @@
+.name {
+    text-align: center;
+    background-color: lightgrey;
+    border: 3px solid black;
+    padding: 0.5%;
+    margin: 2.5%;
+}
+
+a:link {
+    color: green;
+}
+
+a:hover {
+    color: red;
+}
+
+#drop_hover:hover + #drop_content, #drop_content:hover {
+    display: block;
+  }
+  #drop_content {
+    display: none;
+  }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  z-index: -1;
+  }
+
+.layer {
+  position: absolute;
+  font-size: 200%;
+  left: 2%;
+}
+

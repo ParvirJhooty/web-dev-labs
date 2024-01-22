@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+        <title>Lab 6</title>
+        <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Lab 6 (Creating Vector Images with SVG)</h1>
+
+    <h2>Problem 1</h2>
+
+    <h4>Original Shapes</h3>
+    <img class="shapes" src="shapes.png" alt="shapes">
+
+    <h4>SVG Shapes</h4>
+
+    <svg height="120" width="1000">
+        <polygon points="65,5 10,100 120,100"
+            style="stroke: black; stroke-width: 2; fill:yellow"></polygon>
+
+        <polygon points="140,100 235,100 235,5 140,5"
+            style="stroke: black; stroke-width: 2; fill:rgb(134, 134, 210)"></polygon>
+
+        <polygon points="305,5 255,35 270,100 340,100 355,35"
+            style="stroke: black; stroke-width: 2; fill:rgb(224, 117, 117)"></polygon>
+
+        <polygon points="425,5 375,28.75 375,76.25 425,100 475,76.25 475,28.75"
+            style="stroke: black; stroke-width: 2; fill:rgb(52, 187, 52)"></polygon>
+
+        <text x="45" y="115" font-size="12" fill="black">Triangle</text>
+        <text x="154" y="115" font-size="12" fill="black">Quadrilateral</text>
+        <text x="278" y="115" font-size="12" fill="black">Pentagon</text>
+        <text x="400" y="115" font-size="12" fill="black">Hexagon</text>
+    </svg>
+
+    <h2>Problem 2</h2>
+
+    <h4>Flags</h3>
+    
+    <svg height="190" width="250">
+        <rect width="250" height="150" fill="#006a4e"></rect>
+        <circle cx="114" cy="75" r="50" fill="#f42a41"></circle>
+        <text x="50" y="175" font-size="12" fill="black">Bangladesh (SVG Version)</text>
+    </svg>
+    <img class="flags" src="bangladesh.png" alt="bangladesh">
+
+    <br>
+
+    <svg height="190" width="250">
+        <rect width="250" height="150" fill="#FFDD00"></rect>
+        <rect width="250" height="75" fill="#0057b7"></rect>
+        <text x="50" y="175" font-size="12" fill="black">Ukraine (SVG Version)</text>
+    </svg>
+    <img class="flags" src="ukraine.avif" alt="ukraine">
+</body>
+</html>

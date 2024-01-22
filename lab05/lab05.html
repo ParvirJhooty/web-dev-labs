@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+        <title>Lab 5</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+</head>
+    <body>
+        <h1>Potato Head Builder (Drag and Drop)</h1>
+        <button class="save-button" onclick="saveImage()">Save Image</button>
+        <div id="potato-container">
+            <div>
+                <img src="potato parts/mrpotatohead.gif" alt="Potato-Body">
+            </div>
+            <div class="parts">
+                <img class="draggable" src="potato parts/eyes1.gif" alt="potato-eyes1">
+                <img class="draggable" src="potato parts/eyes2.gif" alt="potato-eyes2">
+                <img class="draggable" src="potato parts/glasses3.gif" alt="potato-glasses">
+                <img class="draggable" src="potato parts/nose1.gif" alt="potato-nose1">
+                <img class="draggable" src="potato parts/nose2.gif" alt="potato-nose2">
+                <img class="draggable" src="potato parts/nose3.gif" alt="potato-nose3">
+                <img class="draggable" src="potato parts/nose4.gif" alt="potato-nose4">
+                <img class="draggable" src="potato parts/mouth1.gif" alt="potato-mouth1">
+                <img class="draggable" src="potato parts/mouth2.gif" alt="potato-mouth2">
+                <img class="draggable" src="potato parts/beard1.gif" alt="potato-beard1">
+                <img class="draggable" src="potato parts/beard2.gif" alt="potato-beard2">
+                <img class="draggable" src="potato parts/ears1.gif" alt="potato-ears1">
+                <img class="draggable" src="potato parts/ears2.gif" alt="potato-ears2">
+                <img class="draggable" src="potato parts/hat1.gif" alt="potato-hat1">
+                <img class="draggable" src="potato parts/hat2.gif" alt="potato-hat2">
+                <img class="draggable" src="potato parts/shoes1.gif" alt="potato-shoes1">
+                <img class="draggable" src="potato parts/shoes2.gif" alt="potato-shoes2">
+                <img class="draggable" src="potato parts/arms1.gif" alt="potato-arms1">
+                <img class="draggable" src="potato parts/arms2.gif" alt="potato-arms2">
+            </div>
+        </div>
+        <br>
+        <br>
+        <h1>Problem 2 (Hover to enlarge, click to minimize)</h1>
+
+        <div class="image-container">
+            <img class="image" src="spongebob.jpg" alt="Image" width="300" height="200">
+        </div>
+
+
+    <script>
+        function saveImage() {
+            const rightBox = document.querySelector("#potato-container");
+            html2canvas(rightBox).then(function (canvas) {
+                const imgData = canvas.toDataURL("image/png");
+                const link = document.createElement("a");
+                link.href = imgData;
+                link.download = "image.png";
+                link.click();
+            });
+        }
+
+        $(function() {
+            $(".draggable").draggable({
+            });
+        });
+
+        $(document).ready(function() {
+            $(".image").hover(function() {
+                // Increase the size of the image
+                $(this).animate({
+                    width: "100%",
+                    height: "100%",
+                    top: 0,
+                    left: 0
+                }, 500);
+            });
+
+            // Click event to revert the image to its original size and position
+            $(".image").on("click", function() {
+                $(this).animate({
+                    width: "300px",
+                    height: "200px",
+                    top: 0,
+                    left: 0
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>

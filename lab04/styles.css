@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#output {
+    display: none;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+#output p {
+    margin: 10px;
+}
+
+.icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.secure::before {
+    content: "\1F512"; /* Closed green padlock */
+    color: green;
+}
+
+.insecure::before {
+    content: "\1F513"; /* Opened red padlock */
+    color: rgb(202, 55, 55);
+}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+        <title>Lab 4</title>
+        <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>User Information</h1>
+    <form id="userForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <br>
+        <br>
+        <label for="address">Address:</label>
+        <input type="text" id="address">
+        <br>
+        <br>
+        <label for="phone">Phone Number (XXX) XXX-XXXX:</label>
+        <input type="text" id="phone" required>
+        <br>
+        <br>
+        <button type="button" onclick="validateForm()">Submit</button>
+    </form>
+
+    <br>
+
+    <div id="output">
+        <p id="outputName"></p>
+        <p id="outputAddress"></p>
+        <p id="outputPhone"></p>
+    </div>
+
+    <br>
+
+    <h1>Character and Letter Count</h1>
+    <textarea id="textInput" rows="5" cols="50" oninput="countCharactersAndLetters()"></textarea>
+    <div id="charCount">Character Count: <span id="charCountValue">0</span></div>
+    <div id="letterCount">Letter Count: <span id="letterCountValue">0</span></div>
+
+    <br>
+
+    <h1>Bookmarks</h1>
+    <div id="linkList">
+        <p id="link1">Link 1: <a href="https://www.example.com">https://www.example.com</a></p>
+        <p id="link2">Link 2: <a href="http://www.example.com">http://www.example.com</a></p>
+    </div>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById("name").value;
+            const address = document.getElementById("address").value;
+            const phone = document.getElementById("phone").value;
+
+            const nameFormat = /^[A-Za-z\s]+$/;                      //only allows letters and spaces
+            const phoneFormat = (/\((\d{3})\) (\d{3})-(\d{4})/);     //matches format
+
+            if (!nameFormat.test(name)) {
+                alert("Name can only contain letters and spaces.");
+                return;
+            }
+
+            if (!phoneFormat.test(phone)) {
+                alert("Phone number must be in the format (XXX) XXX-XXXX.");
+                return;
+            }
+
+            displayUserInformation(name, address, phone);
+        }
+
+        function formatPhoneNumber(phone) {
+            const matches = phone.match(/\((\d{3})\) (\d{3})-(\d{4})/);
+            if (matches) {
+                return matches[1] + "-" + matches[2] + "-" + matches[3];
+            }
+            return phone; // Return the original phone if not in the correct format.
+        }
+
+        function displayUserInformation(name, address, phone) {
+            const outputName = document.getElementById("outputName");
+            const outputAddress = document.getElementById("outputAddress");
+            const outputPhone = document.getElementById("outputPhone");
+            const outputDiv = document.getElementById("output");
+
+            outputName.textContent = "Name: " + name;
+            outputAddress.textContent = "Address: " + address;
+            outputPhone.textContent = "Phone Number: " + formatPhoneNumber(phone);
+
+            outputDiv.style.display = "block";
+        }
+
+        function countCharactersAndLetters() {
+            const textInput = document.getElementById("textInput");
+            const charCount = document.getElementById("charCountValue");
+            const letterCount = document.getElementById("letterCountValue");
+
+            //counts total characters
+            const text = textInput.value;
+            const charCountValue = text.length;
+            charCount.textContent = charCountValue;
+
+            // Count only letters (A-Z and a-z).
+            const letterCountValue = text.match(/[A-Za-z]/g) ? text.match(/[A-Za-z]/g).length : 0;
+            letterCount.textContent = letterCountValue;
+        }
+
+        //takes link and determines whether link is secure or not
+        function checkLinkSecurity(linkElement) {                
+            const linkUrl = linkElement.href;                             //stores link
+            const isSecure = linkUrl.startsWith("https://");              //true if link is secure
+
+            const linkIcon = document.createElement("i");
+            linkIcon.classList.add("icon");                                 //add a class to icon for styling
+            linkIcon.classList.add(isSecure ? "secure" : "insecure");       //adds either the class "secure" or "insecure" to the linkIcon based on the value of the isSecure variable
+
+            linkElement.insertAdjacentElement("beforebegin", linkIcon);     //inserts the linkIcon element just before the linkElement. 
+        }
+
+        //checks each link within linkList id
+        const links = document.querySelectorAll("#linkList a");
+        links.forEach(link => checkLinkSecurity(link));
+
+    </script>
+</body>
+</html>
